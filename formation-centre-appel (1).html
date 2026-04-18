@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ProCall Academy — Formation Centre d'Appel & Communication</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #1a2e45;
+      --navy-light: #243c56;
+      --gold: #d4a843;
+      --gold-light: #e8c46a;
+      --gold-pale: #f5e9c8;
+      --cream: #fdf8f0;
+      --white: #ffffff;
+      --gray-text: #6b7280;
+      --light-bg: #f8fafc;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 27, 42, 0.97);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span { color: var(--white); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 5% 60px;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(212,168,67,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,168,67,0.15);
+      border: 1px solid rgba(212,168,67,0.3);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title .highlight {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(212,168,67,0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: all 0.25s;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat-item .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-item .label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Hero image side */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-img-frame {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      border: 2px solid rgba(212,168,67,0.2);
+    }
+
+    .hero-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85) saturate(0.9);
+    }
+
+    .hero-img-overlay {
+      position: absolute;
+      bottom: 20px; left: 20px; right: 20px;
+      background: rgba(13,27,42,0.88);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid rgba(212,168,67,0.2);
+    }
+
+    .overlay-icon {
+      width: 44px; height: 44px;
+      background: var(--gold);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .overlay-text .t1 {
+      font-weight: 600;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    .overlay-text .t2 {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 2px;
+    }
+
+    /* ===== SECTION GENERIQUE ===== */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--gray-text);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .text-center { text-align: center; }
+    .text-center .section-desc { margin: 0 auto; }
+
+    /* ===== MODULES ===== */
+    .modules-bg { background: var(--white); }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .module-card {
+      background: var(--light-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid #e8edf2;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.3s;
+    }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      border-color: rgba(212,168,67,0.3);
+    }
+
+    .module-card:hover::before { transform: scaleY(1); }
+
+    .module-icon {
+      width: 52px; height: 52px;
+      background: var(--navy);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .module-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .module-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .module-desc {
+      font-size: 0.88rem;
+      color: var(--gray-text);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .module-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: rgba(212,168,67,0.1);
+      color: #8b6a1a;
+      border: 1px solid rgba(212,168,67,0.25);
+      padding: 3px 10px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== PROGRAMME ===== */
+    .programme-bg { background: var(--navy); }
+    .programme-bg .section-title { color: var(--white); }
+    .programme-bg .section-desc { color: rgba(255,255,255,0.6); }
+
+    .programme-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+
+    .programme-img-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+
+    .programme-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.7) saturate(0.8);
+    }
+
+    .programme-img-badge {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 8px 16px;
+      border-radius: 50px;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .acc-item {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .acc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      cursor: pointer;
+      transition: background 0.2s;
+      gap: 12px;
+    }
+
+    .acc-header:hover { background: rgba(255,255,255,0.05); }
+
+    .acc-week {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .acc-title {
+      font-weight: 600;
+      color: var(--white);
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .acc-arrow {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+      transition: transform 0.25s;
+    }
+
+    .acc-item.open .acc-arrow { transform: rotate(180deg); }
+
+    .acc-body {
+      display: none;
+      padding: 0 22px 18px;
+    }
+
+    .acc-item.open .acc-body { display: block; }
+
+    .acc-body ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .acc-body li {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .acc-body li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+
+    /* ===== FORMATEURS ===== */
+    .team-bg { background: var(--cream); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #eaeef3;
+      transition: all 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+    }
+
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 3/2.5;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.3s;
+    }
+
+    .team-card:hover .team-photo { filter: grayscale(0%); }
+
+    .team-info {
+      padding: 1.5rem;
+    }
+
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 0.83rem;
+      color: var(--gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .team-bio {
+      font-size: 0.85rem;
+      color: var(--gray-text);
+      line-height: 1.65;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testi-bg { background: var(--white); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .testi-card {
+      background: var(--light-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid #eaeef3;
+      position: relative;
+    }
+
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold-pale);
+      line-height: 0.6;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .testi-text {
+      font-size: 0.95rem;
+      color: var(--navy);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid var(--gold-pale);
+    }
+
+    .testi-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--navy);
+    }
+
+    .testi-job {
+      font-size: 0.78rem;
+      color: var(--gray-text);
+    }
+
+    .stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 8px; }
+
+    /* ===== INSCRIPTION ===== */
+    .cta-bg {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #162235 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -150px; left: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(212,168,67,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-inner .section-title { color: var(--white); }
+    .cta-inner .section-desc { color: rgba(255,255,255,0.65); margin: 0 auto 2.5rem; }
+
+    .cta-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+    .form-group select option { background: var(--navy); color: var(--white); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(212,168,67,0.6);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 15px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: all 0.25s;
+      letter-spacing: 0.3px;
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(212,168,67,0.35);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #08111c;
+      padding: 60px 5% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .nav-logo {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 1.35rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-col a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 120px 5% 60px; }
+      .hero-visual { display: none; }
+      .programme-layout { grid-template-columns: 1fr; }
+      .programme-img-wrap { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .cta-form { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">ProCall<span> Academy</span></div>
+  <ul class="nav-links">
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#programme">Programme</a></li>
+    <li><a href="#formateurs">Formateurs</a></li>
+    <li><a href="#temoignages">Témoignages</a></li>
+    <li><a href="#inscription" class="nav-cta">S'inscrire</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="accueil">
+  <div class="hero-content">
+    <div class="hero-badge">Formation certifiante</div>
+    <h1 class="hero-title">
+      Maîtrisez l'art de la
+      <span class="highlight">communication professionnelle</span>
+    </h1>
+    <p class="hero-subtitle">
+      Une formation complète en centre d'appel et communication client. 
+      Développez vos compétences, boostez votre carrière, et transformez chaque interaction en opportunité.
+    </p>
+    <div class="hero-buttons">
+      <a href="#inscription" class="btn-primary">Commencer la formation →</a>
+      <a href="#programme" class="btn-secondary">Voir le programme</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="num">1 200+</div>
+        <div class="label">Diplômés</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">94%</div>
+        <div class="label">Taux d'emploi</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">8 sem.</div>
+        <div class="label">Durée</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-img-frame">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&auto=format&fit=crop&q=80" alt="Formation centre d'appel" />
+      <div class="hero-img-overlay">
+        <div class="overlay-icon">📞</div>
+        <div class="overlay-text">
+          <div class="t1">Prochain démarrage : 5 Mai 2025</div>
+          <div class="t2">Places limitées — Inscrivez-vous maintenant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section id="modules" class="modules-bg">
+  <div class="text-center">
+    <p class="section-label">Ce que vous apprendrez</p>
+    <h2 class="section-title">Modules de formation</h2>
+    <p class="section-desc">Un cursus structuré pour vous rendre opérationnel rapidement dans n'importe quel environnement de centre d'appel.</p>
+  </div>
+  <div class="modules-grid">
+    <div class="module-card">
+      <div class="module-icon">📞</div>
+      <div class="module-num">Module 01</div>
+      <h3 class="module-title">Bases de la communication téléphonique</h3>
+      <p class="module-desc">Posture vocale, élocution, rythme de la conversation, et maîtrise des silences pour une communication claire et confiante.</p>
+      <div class="module-tags">
+        <span class="tag">Voix</span><span class="tag">Diction</span><span class="tag">Écoute active</span>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">🎯</div>
+      <div class="module-num">Module 02</div>
+      <h3 class="module-title">Gestion de la relation client</h3>
+      <p class="module-desc">Techniques de satisfaction client, fidélisation, traitement des réclamations et création d'une expérience positive à chaque appel.</p>
+      <div class="module-tags">
+        <span class="tag">CRM</span><span class="tag">Réclamations</span><span class="tag">Fidélisation</span>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">🧠</div>
+      <div class="module-num">Module 03</div>
+      <h3 class="module-title">Psychologie et empathie</h3>
+      <p class="module-desc">Comprendre le comportement humain, développer l'intelligence émotionnelle et adapter son discours à chaque profil de client.</p>
+      <div class="module-tags">
+        <span class="tag">Empathie</span><span class="tag">IE</span><span class="tag">Comportement</span>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">💼</div>
+      <div class="module-num">Module 04</div>
+      <h3 class="module-title">Techniques de vente et négociation</h3>
+      <p class="module-desc">Méthodes de vente par téléphone, traitement des objections, closing et upselling dans le respect du client.</p>
+      <div class="module-tags">
+        <span class="tag">Vente</span><span class="tag">Objections</span><span class="tag">Closing</span>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">💻</div>
+      <div class="module-num">Module 05</div>
+      <h3 class="module-title">Outils numériques & CRM</h3>
+      <p class="module-desc">Prise en main des logiciels CRM (Salesforce, Zendesk), gestion des tickets, scripts d'appel et reporting d'activité.</p>
+      <div class="module-tags">
+        <span class="tag">Salesforce</span><span class="tag">Zendesk</span><span class="tag">Reporting</span>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">⚡</div>
+      <div class="module-num">Module 06</div>
+      <h3 class="module-title">Gestion du stress et performance</h3>
+      <p class="module-desc">Techniques anti-stress, organisation du temps, maintien de la performance sous pression et prévention du burn-out.</p>
+      <div class="module-tags">
+        <span class="tag">Bien-être</span><span class="tag">Performance</span><span class="tag">Organisation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section id="programme" class="programme-bg">
+  <div class="programme-layout">
+    <div>
+      <p class="section-label" style="color: rgba(212,168,67,0.7);">Planning détaillé</p>
+      <h2 class="section-title">Programme sur 8 semaines</h2>
+      <p class="section-desc">Une progression logique et intensive pour vous transformer en expert de la communication client.</p>
+      <br>
+      <div class="accordion" id="acc">
+        <div class="acc-item open">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-week">Sem. 1–2</span>
+            <span class="acc-title">Fondamentaux et posture professionnelle</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul>
+              <li>Introduction au métier de téléconseiller</li>
+              <li>Travail vocal et maîtrise de la voix</li>
+              <li>Techniques d'écoute active et reformulation</li>
+              <li>Environnement juridique (RGPD, démarchage)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-week">Sem. 3–4</span>
+            <span class="acc-title">Relation client et gestion des appels</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul>
+              <li>Accueil téléphonique et scripts professionnels</li>
+              <li>Traitement des réclamations et clients difficiles</li>
+              <li>Prise en charge multicanal (email, chat, téléphone)</li>
+              <li>Simulations d'appels réels</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-week">Sem. 5–6</span>
+            <span class="acc-title">Vente, persuasion et négociation</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul>
+              <li>Techniques SONCAS et CAB</li>
+              <li>Traitement des objections types</li>
+              <li>Upselling et cross-selling éthiques</li>
+              <li>Jeux de rôle vente intensive</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-week">Sem. 7–8</span>
+            <span class="acc-title">Mise en situation et certification</span>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul>
+              <li>Stage pratique en centre d'appel partenaire</li>
+              <li>Évaluations continues et feedback personnalisé</li>
+              <li>Préparation au passage de certification</li>
+              <li>Aide à l'insertion professionnelle</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="programme-img-wrap">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop&q=80" alt="Formation communication" />
+      <div class="programme-img-badge">Certifiant RNCP</div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATEURS -->
+<section id="formateurs" class="team-bg">
+  <div class="text-center">
+    <p class="section-label">Notre équipe</p>
+    <h2 class="section-title">Des formateurs experts</h2>
+    <p class="section-desc">Tous nos formateurs sont des professionnels actifs du secteur, avec plus de 10 ans d'expérience terrain.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <img class="team-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80" alt="Formateur" />
+      <div class="team-info">
+        <div class="team-name">Samira El Fassi</div>
+        <div class="team-role">Expert Communication</div>
+        <p class="team-bio">15 ans d'expérience en centres d'appels au Maroc et en France. Spécialiste des techniques de communication avancées.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <img class="team-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Formateur" />
+      <div class="team-info">
+        <div class="team-name">Karim Benali</div>
+        <div class="team-role">Coach Vente & Négociation</div>
+        <p class="team-bio">Ancien directeur commercial, il forme à la vente par téléphone avec une approche orientée résultats et satisfaction client.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <img class="team-photo" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&auto=format&fit=crop&q=80" alt="Formatrice" />
+      <div class="team-info">
+        <div class="team-name">Nadia Chaoui</div>
+        <div class="team-role">Psychologie & Gestion du stress</div>
+        <p class="team-bio">Psychologue du travail et coach certifiée, elle accompagne les apprenants dans le développement de leur intelligence émotionnelle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section id="temoignages" class="testi-bg">
+  <div class="text-center">
+    <p class="section-label">Ils nous font confiance</p>
+    <h2 class="section-title">Ce que disent nos diplômés</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <span class="quote-mark">"</span>
+      <p class="testi-text">Cette formation a complètement transformé ma façon de communiquer avec les clients. J'ai décroché mon emploi deux semaines après la fin du cursus.</p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80" alt="Témoignage" />
+        <div>
+          <div class="testi-name">Aicha Moussaoui</div>
+          <div class="testi-job">Conseillère client — Maroc Telecom</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <span class="quote-mark">"</span>
+      <p class="testi-text">Les modules sur la vente et la négociation sont exceptionnels. J'ai augmenté mon taux de conversion de 40% en appliquant les techniques enseignées.</p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80" alt="Témoignage" />
+        <div>
+          <div class="testi-name">Youssef Alami</div>
+          <div class="testi-job">Commercial téléphonique — Inwi</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <span class="quote-mark">"</span>
+      <p class="testi-text">La partie gestion du stress m'a été précieuse. Aujourd'hui je gère les appels difficiles avec beaucoup plus de sérénité et de professionnalisme.</p>
+      <div class="testi-author">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&auto=format&fit=crop&q=80" alt="Témoignage" />
+        <div>
+          <div class="testi-name">Fatima Zahrae</div>
+          <div class="testi-job">Superviseure — CRC Casablanca</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSCRIPTION -->
+<section id="inscription" class="cta-bg">
+  <div class="cta-inner">
+    <p class="section-label">Rejoignez-nous</p>
+    <h2 class="section-title">Inscrivez-vous dès maintenant</h2>
+    <p class="section-desc">Remplissez ce formulaire et notre équipe vous contactera sous 24h pour finaliser votre inscription.</p>
+    <form class="cta-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label>Prénom</label>
+        <input type="text" placeholder="Votre prénom" required />
+      </div>
+      <div class="form-group">
+        <label>Nom</label>
+        <input type="text" placeholder="Votre nom" required />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="votre@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input type="tel" placeholder="+212 6XX XXX XXX" />
+      </div>
+      <div class="form-group full">
+        <label>Session souhaitée</label>
+        <select>
+          <option value="">Choisir une session</option>
+          <option>5 Mai 2025 — Casablanca</option>
+          <option>2 Juin 2025 — Rabat</option>
+          <option>7 Juillet 2025 — En ligne</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Message (optionnel)</label>
+        <textarea placeholder="Décrivez votre projet professionnel ou posez vos questions..."></textarea>
+      </div>
+      <div class="form-group full">
+        <button type="submit" class="btn-submit">Envoyer ma demande d'inscription →</button>
+      </div>
+    </form>
+    <p id="form-success" style="display:none; color: #5dcaa5; font-weight:600; text-align:center; margin-top:1rem;">
+      ✓ Votre demande a bien été envoyée ! Nous vous contacterons sous 24h.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="nav-logo">ProCall<span> Academy</span></span>
+      <p>Centre de formation spécialisé en communication professionnelle et métiers des centres d'appel depuis 2015.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Formation</h4>
+      <ul>
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#formateurs">Formateurs</a></li>
+        <li><a href="#inscription">Inscription</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informations</h4>
+      <ul>
+        <li><a href="#">Tarifs</a></li>
+        <li><a href="#">Financement</a></li>
+        <li><a href="#">Certification</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">contact@procall.ma</a></li>
+        <li><a href="#">+212 5 22 XX XX XX</a></li>
+        <li><a href="#">Casablanca, Maroc</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 ProCall Academy. Tous droits réservés.</p>
+    <p>Mentions légales · Politique de confidentialité</p>
+  </div>
+</footer>
+
+<script>
+  function toggleAcc(header) {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    e.target.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.module-card, .team-card, .testi-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
